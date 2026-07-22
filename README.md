@@ -9,116 +9,116 @@ Os assistentes virtuais no setor de segurança da informação estão evoluindo 
 - **Guiar investigações** de incidentes de forma consultiva.
 - **Garantir a ética e segurança** nas respostas, atuando estritamente sob os princípios de *White Hat* (Defesa e Educação), com barreiras anti-alucinação.
 
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
-
 ---
 
 ## O Que Você Vai Encontrar Neste Repositório
 
 ### 1. Documentação do Agente
 
-Definição de **o que** o agente Templair faz e **como** ele funciona:
+Definição do escopo, comportamento e arquitetura do **Templair**:
 
 - **Caso de Uso:** Suporte a analistas de SOC nível 1 e estudantes, ajudando na interpretação de logs (SIEM), cálculos de sub-redes e documentação de incidentes.
 - **Persona e Tom de Voz:** O agente atua como um mentor técnico experiente: direto, analítico e encorajador.
 - **Arquitetura:** Fluxo de ingestão de logs do usuário e cruzamento com a base de conhecimento técnica.
 - **Segurança (Guardrails):** Protocolos rígidos para recusar a criação de scripts maliciosos ofensivos, focando apenas em mitigação e defesa.
 
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
+📄 **Documentação:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
 
 ---
 
 ### 2. Base de Conhecimento
 
-Utilização de **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar e contextualizar o agente:
+Utilização de **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar e contextualizar o agente (RAG):
 
 | Arquivo | Formato | Descrição |
 |---------|---------|-----------|
 | `alertas_siem.csv` | CSV | Amostras de logs de tráfego de rede e alertas de intrusão |
-| `historico_incidentes.csv` | CSV | Casos resolvidos anteriormente pela equipe do SOC |
 | `guias_mitigacao.json` | JSON | Playbooks com táticas de ameaças e ações imediatas recomendadas |
+| `historico_incidentes.csv` | CSV | Memória de resposta e casos resolvidos anteriormente pela equipe de SOC |
 | `politicas_seguranca.json` | JSON | Diretrizes corporativas, regras de firewall e permissões de acesso |
 
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
+📄 **Documentação:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
 
 ---
 
 ### 3. Prompts do Agente
 
-Documentação da engenharia de prompts que define as "regras do jogo" para a IA:
+Documentação da engenharia de prompts que define as diretrizes comportamentais da IA:
 
-- **System Prompt:** Diretrizes de atuação como analista de segurança e restrições éticas fundamentais.
-- **Exemplos de Interação (Few-Shot):** Como o agente deve responder ao receber um dump de log confuso.
-- **Tratamento de Edge Cases:** Como a IA se comporta quando o usuário pede um exploit funcional ou fornece dados de rede insuficientes.
+- **System Prompt:** Regras de atuação como analista de segurança e restrições éticas fundamentais.
+- **Exemplos de Interação (Few-Shot):** Exemplos práticos de triagem de logs.
+- **Tratamento de Edge Cases:** Comportamento diante de requisições maliciosas ou falta de dados.
 
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
+📄 **Documentação:** [`docs/03-prompts.md`](./docs/03-prompts.md)
 
 ---
 
 ### 4. Aplicação Funcional
 
-O **protótipo funcional** do agente:
+O **protótipo funcional** do agente e scripts de execução:
 
 - Interface interativa para o envio de perguntas e logs simulando um painel SOC (Streamlit).
-- Integração com o LLM.
-- Conexão de contexto (RAG - Retrieval-Augmented Generation) com a base de conhecimento corporativa.
+- Executável em lote (`executar_templair.bat`) para inicialização com um clique no Windows.
 
-📁 **Pasta:** [`src/`](./src/)
+📁 **Pasta da Aplicação:** [`src/`](./src/)
 
 ---
 
 ### 5. Avaliação e Métricas
 
-Metodologia de avaliação da qualidade e segurança do assistente:
+Metodologia de avaliação da qualidade, segurança e conformidade do assistente.
 
-**Métricas Aplicadas:**
-- **Precisão Técnica:** Acerto na explicação de conceitos de redes e vulnerabilidades.
-- **Taxa de Conformidade Ética:** Percentual de bloqueio bem-sucedido contra requisições maliciosas (Zero alucinação perigosa).
-- **Tempo de Resolução:** Redução no tempo de interpretação de um log em comparação com a busca manual.
-
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
+📄 **Documentação:** [`docs/04-metricas.md`](./docs/04-metricas.md)
 
 ---
 
 ### 6. Pitch
 
-Apresentação do projeto (Problema, Solução e Valor):
+Roteiro e apresentação executiva da solução direcionada a gestores de TI e CISOs.
 
-- Qual gargalo dos centros de operações de segurança o Templair resolve?
-- Como ele empodera analistas juniores na prática?
-- Por que a implementação de IA Generativa com *guardrails* é o futuro da triagem cibernética?
-
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
+📄 **Documentação:** [`docs/05-pitch.md`](./docs/05-pitch.md)
 
 ---
 
-## Estrutura do Repositório
+## Estrutura Atual do Repositório
 
 ```text
-📁 assistente-virtual-cybersec/
+📁 ASSISTENTE_VIRTUAL/
 │
-├── 📄 README.md
+├── 📁 assets/                        # Recursos visuais e roteiros auxiliares
+│   ├── README.md
+│   └── RoteiroLab.md
 │
-├── 📁 data/                          # Dados mockados e relatórios
-│   ├── alertas_siem.csv              # Logs e alertas de rede (CSV)
-│   ├── historico_incidentes.csv      # Memória de resposta do SOC (CSV)
-│   ├── guias_mitigacao.json          # Táticas e ações imediatas (JSON)
-│   └── politicas_seguranca.json      # Regras de infraestrutura (JSON)
+├── 📁 data/                          # Base de dados do SOC (RAG)
+│   ├── alertas_siem.csv              # Logs e alertas de rede
+│   ├── guias_mitigacao.json          # Playbooks de resposta a incidentes
+│   ├── historico_incidentes.csv      # Memória de casos passados
+│   └── politicas_seguranca.json      # Regras de infraestrutura e firewall
 │
-├── 📁 docs/                          # Documentação do projeto
+├── 📁 docs/                          # Documentação detalhada do projeto
 │   ├── 01-documentacao-agente.md     # Persona, uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia dos dados (RAG)
-│   ├── 03-prompts.md                 # Engenharia de prompts éticos
-│   ├── 04-metricas.md                # Avaliação técnica
-│   └── 05-pitch.md                   # Roteiro de apresentação
+│   ├── 02-base-conhecimento.md       # Estratégia de dados e RAG
+│   ├── 03-prompts.md                 # Engenharia de prompts e Guardrails
+│   ├── 04-metricas.md                # Avaliação técnica e ética
+│   └── 05-pitch.md                   # Roteiro de apresentação executiva
 │
-├── 📁 src/                           # Código-fonte da aplicação
-│   ├── app.py                        # Interface do chatbot (Streamlit)
-│   └── requirements.txt              # Dependências do projeto
+├── 📁 examples/                      # Guias de referência e implementação
+│   └── README.md
 │
-├── 📁 assets/                        # Diagramas e prints do projeto
-│   └── arquitetura_agente.png
+├── 📁 src/                           # Código-fonte da aplicação funcional
+│   ├── app.py                        # Dashboard interativo do SOC (Streamlit)
+│   ├── executar_templair.bat         # Atalho de execução para Windows
+│   ├── README.md                     # Instruções do módulo de aplicação
+│   └── requirements.txt              # Dependências Python do projeto
 │
-└── 📁 examples/                      # Referências de implementação
-    └── README.md
+└── 📄 README.md                      # Documentação principal do repositório
+
+
+
+Como Executar o Projeto
+Certifique-se de ter o Python instalado na máquina.
+
+Dê dois cliques no arquivo src/executar_templair.bat ou execute no terminal:
+
+Bash
+python -m streamlit run src/app.py
