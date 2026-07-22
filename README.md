@@ -1,29 +1,29 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
+# 🛡️ Templar AI: Agente de Cibersegurança Inteligente
 
 ## Contexto
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
+Os assistentes virtuais no setor de segurança da informação estão evoluindo de simples bases de pesquisa para **agentes inteligentes e proativos**. Neste projeto, o objetivo é idealizar e prototipar um agente de cibersegurança que utiliza IA Generativa para:
 
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
+- **Acelerar a triagem** de alertas de segurança e logs complexos.
+- **Explicar conceitos técnicos** de infraestrutura de redes e vulnerabilidades de forma didática.
+- **Guiar investigações** de incidentes de forma consultiva.
+- **Garantir a ética e segurança** nas respostas, atuando estritamente sob os princípios de *White Hat* (Defesa e Educação), com barreiras anti-alucinação.
 
 > [!TIP]
 > Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
 
 ---
 
-## O Que Você Deve Entregar
+## O Que Você Vai Encontrar Neste Repositório
 
 ### 1. Documentação do Agente
 
-Defina **o que** seu agente faz e **como** ele funciona:
+Definição de **o que** o agente Sentinel faz e **como** ele funciona:
 
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
+- **Caso de Uso:** Suporte a analistas de SOC nível 1 e estudantes, ajudando na interpretação de logs (SIEM), cálculos de sub-redes e documentação de testes de invasão.
+- **Persona e Tom de Voz:** O agente atua como um mentor técnico experiente: direto, analítico e encorajador.
+- **Arquitetura:** Fluxo de ingestão de logs do usuário e cruzamento com a base de conhecimento técnica.
+- **Segurança (Guardrails):** Protocolos rígidos para recusar a criação de scripts maliciosos ofensivos, focando apenas em mitigação e defesa.
 
 📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
 
@@ -31,16 +31,14 @@ Defina **o que** seu agente faz e **como** ele funciona:
 
 ### 2. Base de Conhecimento
 
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
+Utilização de **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar e contextualizar o agente:
 
 | Arquivo | Formato | Descrição |
 |---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
-
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
+| `alertas_siem.csv` | CSV | Amostras de logs de tráfego e alertas de intrusão |
+| `historico_incidentes.csv` | CSV | Casos resolvidos anteriormente (Playbooks) |
+| `mitre_attck_subsets.json` | JSON | Táticas e técnicas de ameaças mapeadas |
+| `guias_mitigacao.json` | JSON | Políticas de firewall e boas práticas de rede |
 
 📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
 
@@ -48,11 +46,11 @@ Você pode adaptar ou expandir esses dados conforme seu caso de uso.
 
 ### 3. Prompts do Agente
 
-Documente os prompts que definem o comportamento do seu agente:
+Documentação da engenharia de prompts que define as "regras do jogo" para a IA:
 
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
+- **System Prompt:** Diretrizes de atuação como analista de segurança e restrições éticas fundamentais.
+- **Exemplos de Interação (Few-Shot):** Como o agente deve responder ao receber um dump de log confuso.
+- **Tratamento de Edge Cases:** Como a IA se comporta quando o usuário pede um exploit funcional ou fornece dados de rede insuficientes.
 
 📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
 
@@ -60,11 +58,11 @@ Documente os prompts que definem o comportamento do seu agente:
 
 ### 4. Aplicação Funcional
 
-Desenvolva um **protótipo funcional** do seu agente:
+O **protótipo funcional** do agente:
 
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
+- Interface interativa para o envio de perguntas e logs (Streamlit / Gradio).
+- Integração com o LLM.
+- Conexão de contexto (RAG - Retrieval-Augmented Generation) com a base de conhecimento.
 
 📁 **Pasta:** [`src/`](./src/)
 
@@ -72,12 +70,12 @@ Desenvolva um **protótipo funcional** do seu agente:
 
 ### 5. Avaliação e Métricas
 
-Descreva como você avalia a qualidade do seu agente:
+Metodologia de avaliação da qualidade e segurança do assistente:
 
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
+**Métricas Aplicadas:**
+- **Precisão Técnica:** Acerto na explicação de conceitos de redes e vulnerabilidades.
+- **Taxa de Conformidade Ética:** Percentual de bloqueio bem-sucedido contra requisições maliciosas (Zero alucinação perigosa).
+- **Tempo de Resolução:** Redução no tempo de interpretação de um log em comparação com a busca manual.
 
 📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
 
@@ -85,65 +83,41 @@ Descreva como você avalia a qualidade do seu agente:
 
 ### 6. Pitch
 
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
+Apresentação do projeto (Problema, Solução e Valor):
 
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
+- Qual gargalo dos centros de operações de segurança o Sentinel resolve?
+- Como ele empodera analistas juniores na prática?
+- Por que a implementação de IA Generativa com *guardrails* é o futuro da triagem cibernética?
 
 📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
 
 ---
 
-## Ferramentas Sugeridas
-
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
-
----
-
 ## Estrutura do Repositório
 
-```
-📁 lab-agente-financeiro/
+```text
+📁 assistente-virtual-cybersec/
 │
 ├── 📄 README.md
 │
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
+├── 📁 data/                          # Dados mockados e relatórios
+│   ├── alertas_siem.csv              # Logs e alertas (CSV)
+│   ├── historico_incidentes.csv      # Playbooks de resposta (CSV)
+│   ├── mitre_attck_subsets.json      # Táticas de invasão (JSON)
+│   └── guias_mitigacao.json          # Regras e mitigação (JSON)
 │
 ├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
+│   ├── 01-documentacao-agente.md     # Persona, uso e arquitetura
+│   ├── 02-base-conhecimento.md       # Estratégia dos dados (RAG)
+│   ├── 03-prompts.md                 # Engenharia de prompts éticos
+│   ├── 04-metricas.md                # Avaliação técnica
+│   └── 05-pitch.md                   # Roteiro de apresentação
 │
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
+├── 📁 src/                           # Código-fonte da aplicação
+│   └── app.py                        # Interface do chatbot
 │
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
+├── 📁 assets/                        # Diagramas e prints do projeto
+│   └── arquitetura_agente.png
 │
-└── 📁 examples/                      # Referências e exemplos
+└── 📁 examples/                      # Referências de implementação
     └── README.md
-```
-
----
-
-## Dicas Finais
-
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
