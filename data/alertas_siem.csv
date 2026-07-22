@@ -1,11 +1,7 @@
-data,descricao,categoria,valor,tipo
-2025-10-01,Salário,receita,5000.00,entrada
-2025-10-02,Aluguel,moradia,1200.00,saida
-2025-10-03,Supermercado,alimentacao,450.00,saida
-2025-10-05,Netflix,lazer,55.90,saida
-2025-10-07,Farmácia,saude,89.00,saida
-2025-10-10,Restaurante,alimentacao,120.00,saida
-2025-10-12,Uber,transporte,45.00,saida
-2025-10-15,Conta de Luz,moradia,180.00,saida
-2025-10-20,Academia,saude,99.00,saida
-2025-10-25,Combustível,transporte,250.00,saida
+timestamp,ip_origem,ip_destino,porta_destino,evento,severidade,status
+2026-07-22 08:15:22,192.168.1.105,10.0.0.50,22,Multiplas falhas de login SSH,Alta,Bloqueado
+2026-07-22 08:45:10,172.16.0.44,10.0.0.200,80,Tentativa de SQL Injection (URL Anomala),Critica,Em Analise
+2026-07-22 09:12:05,203.0.113.5,192.168.1.10,445,Conexao SMB Suspeita (Externa),Media,Permitido
+2026-07-22 09:30:00,192.168.1.120,8.8.8.8,53,Volume anormal de requisicoes DNS,Baixa,Permitido
+2026-07-22 10:05:44,10.0.0.15,192.168.1.100,0,Varredura de Portas (Port Scan Nmap detectado),Alta,Bloqueado
+2026-07-22 10:42:18,192.168.1.50,198.51.100.22,443,Trafego de saida para IP de Botnet Conhecida,Critica,Em Analise
